@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 19:22:10 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/08 12:00:45 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/08 12:01:01 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/08 12:15:40 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_strcpy(char *dst, char *src, unsigned int len)
+char	*ft_strcat(char *restrict s1, char *restrict s2)
 {
-	unsigned int i;
+	unsigned int	length_s1;
+	unsigned int	length_s2;
+	unsigned int	i;
 
+	length_s1 = 0;
+	while(s1[length_s1])
+		length_s1++;
+	length_s2 = 0;
+	while(s2[length_s2])
+		length_s2++;
 	i = 0;
-	while (src[i] && i < len)
+	while(i < length_s2)
 	{
-		dst[i] = src[i];
+		s1[length_s1 + i] = s2[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	s1[length_s1 + i] = '\0';
+	return (s1);
 }

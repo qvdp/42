@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 19:22:10 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/08 12:00:45 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/05 21:06:13 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/08 12:39:51 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_strcpy(char *dst, char *src, unsigned int len)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
-	while (src[i] && i < len)
-	{
-		dst[i] = src[i];
+	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (s1[i] - s2[i]);
 }
