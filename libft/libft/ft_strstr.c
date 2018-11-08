@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:39:54 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/07 18:49:42 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/08 11:31:53 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	*ft_strstr(char *haystack, char *needle)
 		}
 		i++;
 	}
-	return NULL;
+	return (NULL);
 }
