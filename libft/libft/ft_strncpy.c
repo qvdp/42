@@ -1,18 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 19:22:10 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/08 12:00:45 by qvan-der         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_header.h"
 
-char	ft_strcpy(char *dst, char *src, unsigned int len)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	unsigned int i;
+	size_t i;
 
 	i = 0;
 	while (src[i] && i < len)
@@ -20,6 +10,10 @@ char	ft_strcpy(char *dst, char *src, unsigned int len)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
 	return (dst);
 }

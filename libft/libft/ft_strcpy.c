@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	ft_strcpy(char *dst, char *src)
+#include "ft_header.h"
+
+char	*ft_strcpy(char *dst, const char *src)
 {
 	int i;
 

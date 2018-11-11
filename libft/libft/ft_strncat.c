@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *restrict s1, char *restrict s2, size_t n)
-{
-	unsigned int	length_s1;
-	unsigned int	length_s2;
-	unsigned int	i;
+#include "ft_header.h"
 
-	length_s1 = 0;
-	while(s1[length_s1])
-		length_s1++;
-	length_s2 = 0;
-	while(s2[length_s2])
-		length_s2++;
+char	*ft_strncat(char *restrict s1, char *restrict s2, size_t n)
+{
+	size_t	length_s1;
+	size_t	length_s2;
+	size_t	i;
+
+	length_s1 = ft_strlen(s1);
+	length_s2 = ft_strlen(s2);
 	i = 0;
 	while(i < length_s2 && i < n)
 	{

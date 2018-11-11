@@ -10,18 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
+#include "ft_header.h"
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *s1)
 {
 	int		i;
-	int		length;
+	size_t		length;
 	char	*cpy;
 
-	length = 0;
-	while (s1[length])
-		length++;
+	length = ft_strlen(s1);
 	if (!(cpy = (char*)malloc(sizeof(cpy) * (length + 1))))
 		return (NULL);
 	i = 0;

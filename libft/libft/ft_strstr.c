@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_header.h"
 
-char	*ft_strstr(char *haystack, char *needle)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
 	int i;
 	int j;
@@ -26,7 +26,7 @@ char	*ft_strstr(char *haystack, char *needle)
 			while (haystack[i + j] == needle[j])
 				j++;
 			if (!needle[j])
-				return (&haystack[i]);
+				return ((char*)&haystack[i]);
 		}
 		i++;
 	}
