@@ -12,6 +12,8 @@
 
 #include "ft_header.h"
 
+#include <stdio.h>
+
 long		ft_atoi(const char *str)
 {
 	long	i;
@@ -37,3 +39,12 @@ long		ft_atoi(const char *str)
 	}
 	return (is_negative ? temp * -1 : temp);
 }
+
+/*int 	main(void)
+{
+	printf("%ld", ft_atoi("−2147483647"));
+	printf("%d", atoi("−2147483648"));
+	//−9,223,372,036,854,775,808
+	//+2,147,483,647
+	//+9,223,372,036,854,775,807
+}*/
