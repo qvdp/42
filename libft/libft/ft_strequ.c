@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:13:05 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:41:06 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/13 20:36:25 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/13 20:37:37 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcat(char *restrict dst, const char *restrict src,
-						size_t size)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int i;
 
-	i = ft_strlen(dst);
-	j = ft_strlen(src);
-	if (size <= i)
-		return (j + size);
-	k = 0;
-	while (k < (size - i - 1) && src[k])
+	if (s1 && s2)
 	{
-		dst[i + k] = src[k];
-		k++;
+		i = 0;
+		while (s1[i] == s2[i] && s1[i])
+			i++;
+		if (s1[i] == s2[i])
+			return (1);
 	}
-	dst[i + k] = '\0';
-	return (i + j);
+	return (0);
 }
