@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:42:25 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/13 11:33:25 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/13 18:45:36 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+void	ft_strdel(char **as)
 {
-	unsigned char	*b_copy;
-	size_t			i;
-
-	b_copy = b;
-	i = 0;
-	while (i < len)
+	if (as)
 	{
-		b_copy[i] = (unsigned char)c;
-		i++;
+		free(*as);
+		*as = NULL;
 	}
-	return ((unsigned char*)b);
 }

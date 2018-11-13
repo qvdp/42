@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:42:25 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/12 20:13:05 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/12 20:41:06 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+size_t		ft_strlcat(char *restrict dst, const char *restrict src,
+						size_t size)
 {
-	unsigned char	*b_copy;
-	size_t			i;
+	size_t	i;
+	size_t	j;
+	size_t	k;
+	size_t	temp;
 
-	b_copy = b;
-	i = 0;
-	while (i < len)
+	i = ft_strlen(dst);
+	j = ft_strlen(src);
+	if (size <= i)
+		return (j + size);
+	k = 0;
+	temp = i;
+	while (k < (size - temp - 1) && src[k])
 	{
-		b_copy[i] = (unsigned char)c;
+		dst[i] = src[k];
 		i++;
+		k++;
 	}
-	return ((unsigned char*)b);
+	dst[i] = '\0';
+	return (temp + j);
 }

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:42:25 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/12 20:26:06 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/12 20:36:55 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+void				*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*b_copy;
+	unsigned char	*s_copy;
 	size_t			i;
 
-	b_copy = b;
+	s_copy = (unsigned char*)s;
 	i = 0;
-	while (i < len)
-	{
-		b_copy[i] = (unsigned char)c;
+	while (s_copy[i] != (unsigned char)c && i < n && s_copy[i])
 		i++;
-	}
-	return ((unsigned char*)b);
+	if (i == n && s_copy[i] != (unsigned char)c)
+		return (NULL);
+	else
+		return ((unsigned char*)&s_copy[i]);
 }

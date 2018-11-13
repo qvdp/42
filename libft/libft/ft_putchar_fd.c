@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:42:25 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/13 11:50:18 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/13 18:42:50 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*b_copy;
-	size_t			i;
-
-	b_copy = b;
-	i = 0;
-	while (i < len)
-	{
-		b_copy[i] = (unsigned char)c;
-		i++;
-	}
-	return ((unsigned char*)b);
+	write(fd, &c, 1);
 }

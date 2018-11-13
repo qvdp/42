@@ -1,16 +1,29 @@
-#include "ft_header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/12 20:27:12 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/12 20:27:18 by qvan-der         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_putnbr(int n)
 {
-	unsigned int nb;
+	unsigned int abs;
 
 	if (n < 0)
 	{
 		ft_putchar('-');
-		nb = n * -1;
-		ft_putnbr(nb);
+		abs = n * -1;
 	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
+	else
+		abs = n;
+	if (abs > 9)
+		ft_putnbr(abs / 10);
+	ft_putchar(abs % 10 + '0');
 }

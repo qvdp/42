@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 20:26:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:42:25 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/12 14:32:51 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/12 14:35:04 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				*ft_memset(void *b, int c, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*b_copy;
-	size_t			i;
+	unsigned char *s_copy;
 
-	b_copy = b;
-	i = 0;
-	while (i < len)
+	if (n <= 0)
+		return ;
+	s_copy = (unsigned char*)s;
+	while (n)
 	{
-		b_copy[i] = (unsigned char)c;
-		i++;
+		*s_copy = '\0';
+		s_copy++;
+		n--;
 	}
-	return ((unsigned char*)b);
 }

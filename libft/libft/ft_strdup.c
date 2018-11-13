@@ -6,20 +6,20 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 19:38:55 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/08 11:31:34 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/12 20:39:49 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_header.h"
+#include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s1)
 {
 	int		i;
-	size_t		length;
+	size_t	length;
 	char	*cpy;
 
 	length = ft_strlen(s1);
-	if (!(cpy = (char*)malloc(sizeof(cpy) * (length + 1))))
+	if (!(cpy = (char*)malloc(sizeof(char) * (length + 1))))
 		return (NULL);
 	i = 0;
 	while (s1[i])

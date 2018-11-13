@@ -1,21 +1,32 @@
-#include "ft_header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/12 20:29:25 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/12 20:29:28 by qvan-der         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int i;
+	size_t i;
 	size_t j;
 
 	i = 0;
-	while (haystack[i])
+	if (!*needle)
+		return ((char*)haystack);
+	while (haystack[i] && i < len)
 	{
-		if (haystack[i] == needle[0])
-		{
-			j = 0;
-			while (haystack[i + j] == needle[j] && j < len)
-				j++;
-			if (!needle[j] || j == len)
-				return ((char*)&haystack[i]);
-		}
+		j = 0;
+		while (haystack[i + j] == needle[j] && (j + i) < len && haystack[i + j])
+			j++;
+		if (!needle[j])
+			return ((char*)&haystack[i]);
 		i++;
 	}
 	return (NULL);

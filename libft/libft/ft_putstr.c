@@ -6,17 +6,20 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:29:42 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/05 17:42:02 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/13 18:46:23 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_header.h"
+#include "libft.h"
 
 void	ft_putstr(char *str)
 {
-	while (*str)
+	if (str)
 	{
-		ft_putchar((int)*str);
-		str++;
+		while (*str)
+		{
+			ft_putchar((int)*str);
+			str++;
+		}
 	}
 }
