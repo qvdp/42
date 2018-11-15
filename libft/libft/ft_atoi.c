@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 long				ft_atoi(const char *str)
 {
 	unsigned long	i;
@@ -35,7 +33,7 @@ long				ft_atoi(const char *str)
 		temp = temp * 10 + (str[i] - '0');
 		i++;
 	}
-	if (temp > 9223372036854775807ULL || i > 19)
+	if (temp > 9223372036854775807ULL)
 		return (is_negative ? 0 : -1);
 	return (is_negative ? temp * -1 : temp);
 }

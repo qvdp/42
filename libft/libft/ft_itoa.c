@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <stddef.h>
 
 void	ft_define_size(int *size, int n, int *is_negative)
 {

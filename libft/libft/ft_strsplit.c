@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 size_t	ft_words(char const *s, char c)
 {
@@ -33,28 +34,27 @@ size_t	ft_words(char const *s, char c)
 
 char	**ft_strsplit(char const *s, char c)
 {
-  char **str;
-  unsigned int start;
+  char **tab;
   size_t words;
   size_t count;
   size_t len;
 
   if (!s)
     return (NULL);
-  if (!(str = (char**)malloc(sizeof(char) * (words = ft_words(s, c)) + 1)))
+  if (!(tab = (char**)malloc(sizeof(char*) * (words = ft_words(s, c)) + 1)))
     return (NULL);
   count = 0;
-  start = 0;
-  while (count < words)
+  while (words--)
   {
+    while (*s == c && *s != '\0')
+      s++;
     len = 0;
-    while (s[start] == c)
-      start++;
-    while (s[start + len] != c && s[start + len])
+    while (s[len] != c && s[len] != '\0')
       len++;
-    str[count++] = ft_strsub(s, start, len);
-    start += len;
+    tab[count] = ft_strsub((char*)s, 0, len);
+    s += len;
+    count++;
   }
-  str[count] = NULL;
-  return(str);
+  tab[count] = NULL;
+  return(tab);
 }
