@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict s1, char *restrict s2)
+char	*ft_strcat(char *s1, char *s2)
 {
 	size_t	length_s1;
 	size_t	length_s2;

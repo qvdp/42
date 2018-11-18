@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stddef.h>
+#include <string.h>
 
-void	ft_define_size(int *size, int n, int *is_negative)
+static void	ft_define_size(int *size, int n, int *is_negative)
 {
 	unsigned int abs;
 
@@ -31,7 +31,7 @@ void	ft_define_size(int *size, int n, int *is_negative)
 	*size += 1;
 }
 
-void	ft_fill_str(int n, char *str, int size)
+static void	ft_fill_str(int n, char *str, int size)
 {
 	unsigned int abs;
 

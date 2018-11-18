@@ -12,8 +12,8 @@
 
 long				ft_atoi(const char *str)
 {
-	unsigned long	i;
-	unsigned long	temp;
+	int	i;
+	unsigned long long	temp;
 	int				is_negative;
 
 	i = 0;
@@ -33,7 +33,7 @@ long				ft_atoi(const char *str)
 		temp = temp * 10 + (str[i] - '0');
 		i++;
 	}
-	if (temp > 9223372036854775807ULL)
+	if (temp > 9223372036854775807)
 		return (is_negative ? 0 : -1);
 	return (is_negative ? temp * -1 : temp);
 }
