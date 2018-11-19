@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 12:56:46 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/19 12:57:22 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/19 16:34:44 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_lstaddatend(t_list *alst, t_list *new)
 	}
 }
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*begin;
 	t_list	*new;

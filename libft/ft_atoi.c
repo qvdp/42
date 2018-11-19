@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 18:49:53 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/12 20:36:30 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/11/19 16:28:15 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/19 16:37:43 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
-	int	i;
+	int				i;
 	unsigned long	temp;
 	int				is_negative;
 
-	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
-			|| *str == '\r' || *str == ' ')
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f' ||
+			*str == '\r' || *str == ' ')
 		str++;
 	is_negative = 0;
 	if (*str == '-' || *str == '+')

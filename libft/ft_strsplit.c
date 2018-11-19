@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 19:03:06 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/19 12:55:54 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/19 16:36:35 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 static size_t	ft_words(char const *s, char c)
 {
-	size_t	i;
-	size_t	count;
+	size_t		i;
+	size_t		count;
 
 	i = 0;
 	count = 0;
@@ -34,14 +34,15 @@ static size_t	ft_words(char const *s, char c)
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char	**tab;
-	size_t	words;
-	size_t	count;
-	size_t	len;
+	char		**tab;
+	size_t		words;
+	size_t		count;
+	size_t		len;
 
 	if (!s)
 		return (NULL);
-	if (!(tab = (char**)malloc(sizeof(char*) * (words = ft_words(s, c)) + 1)))
+	words = ft_words(s, c);
+	if (!(tab = (char**)malloc(sizeof(char*) * (words + 1))))
 		return (NULL);
 	count = 0;
 	while (words--)
