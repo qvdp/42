@@ -13,7 +13,7 @@
 int				ft_atoi(const char *str)
 {
 	int	i;
-	unsigned long long	temp;
+	unsigned long	temp;
 	int				is_negative;
 
 	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
@@ -33,7 +33,7 @@ int				ft_atoi(const char *str)
 		temp = temp * 10 + (str[i] - '0');
 		i++;
 	}
-	if (temp > 9223372036854775807ull || i > 19)
+	if (temp > 9223372036854775807 || i > 19)
 		return (is_negative ? 0 : -1);
 	return (is_negative ? -temp : temp);
 }

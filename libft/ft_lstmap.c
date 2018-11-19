@@ -13,34 +13,38 @@
 #include "libft.h"
 #include <stdlib.h>
 
+static void	ft_lstaddatend(t_list *alst, t_list *new)
+{
+	if (alst && new)
+	{
+		new->next = NULL;
+		while (alst->next)
+			alst = alst->next;
+		alst->next = new;
+	}
+}
+
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*tmp;
+	t_list	*begin;
 	t_list	*new;
 
 	if (lst && f)
 	{
-		if (!(new = (t_list*)malloc(sizeof(t_list))))
+		if (!(begin = (t_list*)malloc(sizeof(t_list))))
 			return (NULL);
-		new = NULL;
+		begin = (*f)(lst);
+		begin->next = NULL;
+		lst = lst->next;
 		while (lst)
 		{
-			if (new == NULL)
-			{
-				if (!(tmp = (*f)(lst)))
-					return (NULL);
-				tmp->next = new;
-				new = tmp;
-			}
-			else
-			{
-				if (!(tmp = (*f)(lst)))
-					return (NULL);
-				ft_lstadd(&new, tmp);
-			}
+			if (!(new = (t_list*)malloc(sizeof(t_list))))
+				return (NULL);
+			new = (*f)(lst);
+			ft_lstaddatend(begin, new);
 			lst = lst->next;
 		}
-		return (new);
+		return (begin);
 	}
 	return (NULL);
 }
