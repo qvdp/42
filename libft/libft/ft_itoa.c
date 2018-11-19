@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 15:11:32 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/14 16:00:38 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/11/19 12:58:17 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	ft_fill_str(int n, char *str, int size)
 	str[size] = (abs % 10 + '0');
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		is_negative;
 	int		size;

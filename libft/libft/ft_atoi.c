@@ -10,30 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long				ft_atoi(const char *str)
+int				ft_atoi(const char *str)
 {
 	int	i;
 	unsigned long long	temp;
 	int				is_negative;
 
-	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-			|| str[i] == '\r' || str[i] == ' ')
-		i++;
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
+			|| *str == '\r' || *str == ' ')
+		str++;
 	is_negative = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			is_negative = 1;
-		i++;
+		str++;
 	}
+	i = 0;
 	temp = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		temp = temp * 10 + (str[i] - '0');
 		i++;
 	}
-	if (temp > 9223372036854775807)
+	if (temp > 9223372036854775807ull || i > 19)
 		return (is_negative ? 0 : -1);
-	return (is_negative ? temp * -1 : temp);
+	return (is_negative ? -temp : temp);
 }
