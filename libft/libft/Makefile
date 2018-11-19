@@ -10,8 +10,11 @@ SOURCES = ft_atoi.c\
 		  ft_isascii.c\
 		  ft_isdigit.c\
 			ft_isprint.c\
+			ft_lstadd.c\
 			ft_lstdel.c\
 			ft_lstdelone.c\
+			ft_lstiter.c\
+			ft_lstmap.c\
 			ft_lstnew.c\
 			ft_memalloc.c\
 			ft_memset.c\
