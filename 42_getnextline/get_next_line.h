@@ -1,12 +1,11 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 100
+# define BUFF_SIZE 3
 # include "libft/libft.h"
 
 typedef struct		g_list
 {
 	char			*line;
-  int   is_read;
   int   fd;
 	struct g_list	*next;
 }					h_list;

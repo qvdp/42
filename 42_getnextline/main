@@ -16,7 +16,9 @@ int   main(void)
   printf("************************\n");
   printf("TEST 1 - Error fd\n");
   printf("************************\n\n");
-  printf("%d", get_next_line(-1, &line));
+  printf("Call 1 : %d", get_next_line(-1, &line));
+  printf("%s\n", line);
+  printf("Call 2 : %d", get_next_line(-1, &line));
   printf("%s\n", line);
 
   printf("\n************************\n");
@@ -24,15 +26,24 @@ int   main(void)
   printf("************************\n\n");
   fd = open("txt~", O_RDONLY);
   close(fd);
-  printf("%d", get_next_line(fd, &line));
+  printf("Call 1 : %d", get_next_line(fd, &line));
+  printf("%s\n", line);
+  printf("Call 2 : %d", get_next_line(fd, &line));
   printf("%s\n", line);
 
-  fd2 = 0;
   fd2 = open("txt", O_RDONLY);
   printf("\n************************\n");
   printf("TEST 3 - fd unfinished line\n");
   printf("************************\n\n");
-  printf("%d", get_next_line(fd2, &line));
+  printf("Call 1 : %d", get_next_line(fd2, &line));
+  printf("%s\n", line);
+  printf("Call 2 : %d", get_next_line(fd2, &line));
+  printf("%s\n", line);
+  printf("Call 3 : %d", get_next_line(fd2, &line));
+  printf("%s\n", line);
+  printf("Call 4 : %d", get_next_line(fd2, &line));
+  printf("%s\n", line);
+  printf("Call 5 : %d", get_next_line(fd2, &line));
   printf("%s\n", line);
   close(fd2);
 
@@ -40,25 +51,17 @@ int   main(void)
   printf("\n************************\n");
   printf("TEST 4 - fd 1nd line\n");
   printf("************************\n\n");
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 1 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
-
-  printf("\n************************\n");
-  printf("TEST 5 - fd 2nd line\n");
-  printf("************************\n\n");
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 2 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
-
-  printf("\n************************\n");
-  printf("TEST 6 - Finished fd\n");
-  printf("************************\n\n");
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 3 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 4 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 5 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
-  printf("%d", get_next_line(fd3, &line));
+  printf("Call 6 : %d", get_next_line(fd3, &line));
   printf("%s\n", line);
   close(fd3);
 
