@@ -9,7 +9,6 @@ int ft_readfd(const int fd, char **string)
   char  *tmp;
   char  buff[BUFF_SIZE + 1];
 
-  // printf("|- Starting to read\n");
   while ((temp_size = read(fd, buff, BUFF_SIZE)) > 0)
   {
     buff[temp_size] = '\0';
@@ -19,39 +18,30 @@ int ft_readfd(const int fd, char **string)
     if (ft_strchr(*string, '\n'))
       break;
   }
-  // printf("%s\n", *string);
-  // printf("temp_size %d\n", temp_size);
-  // printf("|- Read finished\n");
-  if (temp_size < 0)
-  {
-    // printf("|- Error founded \n");
-    return (-1);
-  }
   return (temp_size);
 }
 
-h_list  *ft_build_elem(char **string, const int *fd)
+void  *ft_build_elem(h_list **alist, char **string, const int *fd)
 {
-  char    *temp_string;
   h_list  *element;
 
-  temp_string = *string;
-  if (temp_string)
+  if (*string)
   {
   	if ((element = (h_list*)malloc(sizeof(h_list))))
   	{
-      // printf("|-Creating a new element with this line & fd\n");
-      if ((element->line = (char*)malloc(sizeof(*string) * ft_strlen(temp_string))))
+      if ((element->line = (char*)malloc(sizeof(*string) * ft_strlen(*string))))
       {
-        ft_strcpy(element->line, temp_string);
+        ft_strcpy(element->line, *string);
         element->fd = *fd;
-  	    element->next = NULL;
-        return (element);
-       }
-       free(element);
+  	    element->next = *alist;
+        *alist = element;
+      }
+      else
+        free(element);
     }
+    free(*string);
   }
-  return (NULL);
+  return (0);
 }
 
 int  ft_read_line(h_list **element, char **line)
@@ -65,17 +55,11 @@ int  ft_read_line(h_list **element, char **line)
   {
     while (temp_string[pos] != '\0' && temp_string[pos] != '\n')
       pos++;
-    if (pos > 0)
-    {
-      // printf("|-A Line finish at %d in string\n", pos);
-      *line = ft_strsub(temp_string, 0, pos);
-      // printf("|-Line is %s\n", *line);
-      (*element)->line = ft_strsub(temp_string, pos + 1, ft_strlen(temp_string) - pos);
-      // printf("|-New string \n```\n%s\n```\n", (*element)->line);
-      return (1);
-    }
+    *line = ft_strsub(temp_string, 0, pos);
+    //free((*element)->line);
+    (*element)->line = ft_strsub(temp_string, pos + 1, ft_strlen(temp_string) - pos);
   }
-  return (0);
+  return (1);
 }
 
 int get_next_line(const int fd, char **line)
@@ -85,50 +69,26 @@ int get_next_line(const int fd, char **line)
   h_list        *temp_list;
   char          *string;
 
-  // printf("GNL started 🚀\n");
-
-  // Check Error
-  // printf("\n🏁 STEP O - Checking error\n");
   if (fd < 0 || !line)
     return (-1);
-  if (!list)
-    list = NULL;
-  // Check fd  & init of string
   temp_list = list;
-  // printf("\n🏁 STEP 1 - Init the temp string (depend on fd)\n");
   while (temp_list && temp_list->next && fd != temp_list->fd)
     temp_list = temp_list->next;
   if (temp_list && fd == temp_list->fd && temp_list->line)
-  {
-    // printf("|- Trying to read same fd\n");
-    if (!(string = ft_strdup((temp_list)->line)))
-      return (0);
-  }
+    string = ft_strdup(temp_list->line);
   else
   {
     temp_list = list;
-    if (!(string = ft_strnew(0)))
-      return (0);
+    if (!(string = ft_strdup("")))
+      return (-1);
   }
 
-  // Init reading
-  // printf("\n🏁 STEP 2 - Reading the fd\n");
   if ((size = ft_readfd(fd, &string)) == -1)
     return (-1);
   else if (size == 0 && (!string || string[0] == '\0'))
     return (0);
-
-  // Build new element
-  // printf("\n🏁 STEP 3 - Trying to create new elem\n");
-  if ((temp_list = ft_build_elem(&string, &fd)))
-  {
-  		temp_list->next = list;
-  		list = temp_list;
-  }
-
-  // Reading the line
-  // printf("\n🏁 STEP 4 - Giving the line\n");
-  ft_read_line(&list, line);
-  // printf("\nGNL end \n\n");
-  return (1);
+  // TO DO - Verifier que je ne construit pas un maillon a chaque appel et que
+  // je réutilise bien un maillon existant
+  ft_build_elem(&list, &string, &fd);
+  return (ft_read_line(&list, line));
 }
