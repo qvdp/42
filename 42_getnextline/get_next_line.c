@@ -1,94 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/30 16:51:25 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/11/30 17:15:01 by qvan-der         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "get_next_line.h"
 
-int ft_readfd(const int fd, char **string)
+int			ft_readfd(const int fd, char **str)
 {
-  int   temp_size;
-  char  *tmp;
-  char  buff[BUFF_SIZE + 1];
+	int		temp_size;
+	char	*tmp;
+	char	buff[BUFF_SIZE + 1];
 
-  while ((temp_size = read(fd, buff, BUFF_SIZE)) > 0)
-  {
-    buff[temp_size] = '\0';
-    tmp = ft_strjoin(*string, buff);
-		free(*string);
-    *string = tmp;
-    if (ft_strchr(*string, '\n'))
-      break;
-  }
-  return (temp_size);
+	while ((temp_size = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[temp_size] = '\0';
+		tmp = ft_strjoin(*str, buff);
+		free(*str);
+		*str = tmp;
+		if (ft_strchr(*str, '\n'))
+			break ;
+	}
+	return (temp_size);
 }
 
-void  *ft_build_elem(h_list **alist, char **string, const int *fd)
+int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 {
-  h_list  *element;
+	int		i;
+	char	*str;
 
-  if (*string)
-  {
-  	if ((element = (h_list*)malloc(sizeof(h_list))))
-  	{
-      if ((element->line = (char*)malloc(sizeof(*string) * ft_strlen(*string))))
-      {
-        ft_strcpy(element->line, *string);
-        element->fd = *fd;
-  	    element->next = *alist;
-        *alist = element;
-      }
-      else
-        free(element);
-    }
-    free(*string);
-  }
-  return (0);
+	i = 0;
+	if ((str = *line))
+	{
+		while (str[i] != '\0' && str[i] != '\n')
+			i++;
+		*line = ft_strsub(str, 0, i);
+		if (*tmp && ((*tmp)->fd == fd))
+			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
+		else
+		{
+			if (!(*tmp = (t_gnl*)malloc(sizeof(t_gnl))))
+				return (-1);
+			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
+			(*tmp)->fd = fd;
+			(*tmp)->next = *alist;
+			*alist = *tmp;
+		}
+		free(str);
+	}
+	return (1);
 }
 
-int  ft_read_line(h_list **element, char **line)
+int			get_next_line(const int fd, char **line)
 {
-  int  pos;
-  char    *temp_string;
+	static t_gnl	*list;
+	int				size;
+	t_gnl			*tmp;
 
-  pos = 0;
-  temp_string = (*element)->line;
-  if (temp_string)
-  {
-    while (temp_string[pos] != '\0' && temp_string[pos] != '\n')
-      pos++;
-    *line = ft_strsub(temp_string, 0, pos);
-    //free((*element)->line);
-    (*element)->line = ft_strsub(temp_string, pos + 1, ft_strlen(temp_string) - pos);
-  }
-  return (1);
-}
-
-int get_next_line(const int fd, char **line)
-{
-  static h_list *list;
-  int size;
-  h_list        *temp_list;
-  char          *string;
-
-  if (fd < 0 || !line)
-    return (-1);
-  temp_list = list;
-  while (temp_list && temp_list->next && fd != temp_list->fd)
-    temp_list = temp_list->next;
-  if (temp_list && fd == temp_list->fd && temp_list->line)
-    string = ft_strdup(temp_list->line);
-  else
-  {
-    temp_list = list;
-    if (!(string = ft_strdup("")))
-      return (-1);
-  }
-
-  if ((size = ft_readfd(fd, &string)) == -1)
-    return (-1);
-  else if (size == 0 && (!string || string[0] == '\0'))
-    return (0);
-  // TO DO - Verifier que je ne construit pas un maillon a chaque appel et que
-  // je réutilise bien un maillon existant
-  ft_build_elem(&list, &string, &fd);
-  return (ft_read_line(&list, line));
+	if (fd < 0 || !line || !BUFF_SIZE || BUFF_SIZE < 1)
+		return (-1);
+	tmp = list;
+	while (tmp && tmp->next && fd != tmp->fd)
+		tmp = tmp->next;
+	if (tmp && fd == tmp->fd && tmp->line)
+	{
+		if (!(*line = ft_strdup(tmp->line)))
+			return (-1);
+	}
+	else
+	{
+		tmp = list;
+		if (!(*line = ft_strdup("")))
+			return (-1);
+	}
+	if ((size = ft_readfd(fd, line)) <= 0 && (!*line || *line[0] == '\0'))
+		return (size == 0 ? 0 : -1);
+	return (ft_build_elem(&tmp, &list, line, fd));
 }
