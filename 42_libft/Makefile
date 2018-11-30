@@ -61,15 +61,17 @@ SOURCES = ft_atoi.c\
 		  ft_tolower.c\
 		  ft_toupper.c\
 
-HEADERS = libft.h
+INCLUDES = ./includes/
 
 OBJECT = $(SOURCES:.c=.o)
 
-$(NAME):
-	@gcc $(FLAGS) -c $(SOURCES)
+$(NAME): $(OBJECT)
 	@ar rc $(NAME) $(OBJECT)
 	@ranlib $(NAME)
 	@echo "\033[1;34mLibft\t\t\033[1;33mCompilation\t\033[0;32m[OK]\033[0m"
+
+%.o: %.c
+	@gcc $(FLAGS) -I. -o $@ -c $?
 
 all: $(NAME)
 
