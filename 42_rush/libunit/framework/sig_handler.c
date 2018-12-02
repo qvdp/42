@@ -74,7 +74,5 @@ char *ft_sig_handler_part3(pid_t pid)
     return (strdup("\033[1;34m[SIGWINCH]\033[0m"));
   if (WTERMSIG(pid) == 29)
     return (strdup("\033[1;34m[SIGINFO]\033[0m"));
-  if (WTERMSIG(pid) == 30)
-    return (strdup("\033[0;31m[KO]\033[0m"));
-  return (strdup("\033[1;34m[UNKNOWERR]\033[0m"));
+  return (strdup("\033[0;31m[KO]\033[0m"));
 }

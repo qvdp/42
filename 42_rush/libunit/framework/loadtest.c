@@ -18,7 +18,7 @@ int   ft_load_test(t_libtest **alist, char *name, int (*f)(void))
   return (0);
 }
 
-void  print_result(t_libtest *lst)
+int  print_result(t_libtest *lst)
 {
   int   count;
   int   count_err;
@@ -40,6 +40,7 @@ void  print_result(t_libtest *lst)
   ft_pstr_fd("/", 1);
   ft_pnbr_fd(count, 1);
   ft_pstrend_fd(" test checked", 1);
+  return (count - count_err);
 }
 
 int   ft_launch_tests(t_libtest **lst)
@@ -52,19 +53,17 @@ int   ft_launch_tests(t_libtest **lst)
     temp_list->result = ft_test(temp_list->f);
     temp_list = temp_list->next;
   }
-  print_result(*lst);
-  return (0);
+  return ((print_result(*lst)) == 0 ? 0 : -1);
 }
 
-void kill_timeout(int sig)
+/*void kill_timeout(int sig)
 {
     kill(0, SIGUSR1);
-}
+}*/
 
 char   *ft_test(int (*f)(void))
 {
   pid_t   pid;
-  pid_t ret;
 
   pid = fork();
   //signal(SIGALRM, &kill_timeout);
@@ -73,12 +72,9 @@ char   *ft_test(int (*f)(void))
     //alarm(5);
     wait(&pid);
   }
-  if (pid == 0)
-  {
-    f();
-    exit(1);
-  }
-  if (WIFSIGNALED(pid) == 1)
+  else if (pid == 0)
+    exit(f());
+  if (pid != 0)
     return (ft_sig_handler(pid));
   else
     return (strdup("\033[0;32m[OK]\033[0m"));

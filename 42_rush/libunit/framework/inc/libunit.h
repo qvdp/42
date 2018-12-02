@@ -22,6 +22,6 @@ void	ft_pchar_fd(char c, int fd);
 void	ft_pstr_fd(char *str, int fd);
 void	ft_pnbr_fd(int n, int fd);
 char		*strdup(const char *s1);
-void  print_result(t_libtest *lst);
+int  print_result(t_libtest *lst);
 
 #endif
