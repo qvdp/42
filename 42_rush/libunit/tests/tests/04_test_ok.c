@@ -13,13 +13,11 @@
 
 int		true_test_ok(void)
 {
-	int		i;
 	char	*s;
 
-	i = 0;
-	s = "Coucou";
-	while (s[i] != '\0')
-		i++;
-	//	sleep(3);
-	return (0);
+	s = "42";
+	if (s[0] == '4')
+		return (0);
+	else
+		return (-1);
 }

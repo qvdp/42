@@ -17,7 +17,8 @@ int	true_test_segv(void)
 	char *ptr;
 
 	ptr = NULL;
-	ptr[0] = '4';
-	ptr[1] = '2';
-	return (0);
+	if (ptr[4] == '2')
+		return (0);
+	else
+		return (-1);
 }

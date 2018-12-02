@@ -13,11 +13,11 @@
 
 int		true_test_ko(void)
 {
-	int		i;
 	char	*s;
 
 	s = "Coucou";
 	if (s[3] == 'a')
 		return (0);
-	return (-1);
+	else
+		return (-1);
 }

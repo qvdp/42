@@ -16,7 +16,7 @@ int	true_test_bus(void)
 	char 	*str;
 
 	str = "hello";
-	if ((str[4] = '2'))
+	if ((*str = 42))
 		return (-1);
 	else
 		return (0);
