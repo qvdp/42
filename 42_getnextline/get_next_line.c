@@ -44,7 +44,10 @@ int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 			i++;
 		*line = ft_strsub(str, 0, i);
 		if (*tmp && ((*tmp)->fd == fd))
+		{
+			free((*tmp)->line);
 			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
+		}
 		else
 		{
 			if (!(*tmp = (t_gnl*)malloc(sizeof(t_gnl))))
