@@ -44,14 +44,14 @@ int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 			i++;
 		if ((*line = ft_strsub(str, 0, i)) && *tmp && ((*tmp)->fd == fd))
 		{
-			free((*tmp)->line);
-			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
+			//free((*tmp)->line);
+			(*tmp)->line = ft_strdup(ft_strchr((*tmp)->line, '\n') + 1);
 		}
 		else
 		{
 			if (!(*tmp = (t_gnl*)malloc(sizeof(t_gnl))))
 				return (-1);
-			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
+			(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
 			(*tmp)->fd = fd;
 			(*tmp)->next = *alist;
 			*alist = *tmp;
