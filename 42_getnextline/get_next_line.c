@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/30 16:51:25 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/11/30 17:15:01 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/12/03 14:28:14 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 	{
 		while (str[i] != '\0' && str[i] != '\n')
 			i++;
-		*line = ft_strsub(str, 0, i);
-		if (*tmp && ((*tmp)->fd == fd))
+		if ((*line = ft_strsub(str, 0, i)) && *tmp && ((*tmp)->fd == fd))
 		{
 			free((*tmp)->line);
 			(*tmp)->line = ft_strsub(str, i + 1, ft_strlen(str) - i);
