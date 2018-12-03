@@ -13,12 +13,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "get_next_line.h"
+#include <stdio.h>
 
-int			ft_readfd(const int fd, char **str)
+static int			ft_readfd(const int fd, char **str)
 {
 	int		temp_size;
 	char	*tmp;
 	char	buff[BUFF_SIZE + 1];
+
 
 	while ((temp_size = read(fd, buff, BUFF_SIZE)) > 0)
 	{
@@ -32,7 +34,7 @@ int			ft_readfd(const int fd, char **str)
 	return (temp_size);
 }
 
-int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
+static int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 {
 	int		i;
 	char	*str;
@@ -40,18 +42,23 @@ int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 	i = 0;
 	if ((str = *line))
 	{
-		while (str[i] != '\0' && str[i] != '\n')
+		while (str[i] && str[i] != '\n')
 			i++;
 		if ((*line = ft_strsub(str, 0, i)) && *tmp && ((*tmp)->fd == fd))
 		{
-			//free((*tmp)->line);
-			(*tmp)->line = ft_strdup(ft_strchr((*tmp)->line, '\n') + 1);
+			if ((ft_strchr(str, '\n')))
+				(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
+			else
+				(*tmp)->line = ft_strdup("");
 		}
 		else
 		{
 			if (!(*tmp = (t_gnl*)malloc(sizeof(t_gnl))))
 				return (-1);
-			(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
+			if (ft_strchr(str, '\n'))
+				(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
+			else
+				(*tmp)->line = ft_strdup("");
 			(*tmp)->fd = fd;
 			(*tmp)->next = *alist;
 			*alist = *tmp;
@@ -63,27 +70,26 @@ int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
 
 int			get_next_line(const int fd, char **line)
 {
-	static t_gnl	*list;
+	static t_gnl	*list = NULL;
 	int				size;
 	t_gnl			*tmp;
 
 	if (fd < 0 || !line || !BUFF_SIZE || BUFF_SIZE < 1)
 		return (-1);
 	tmp = list;
-	while (tmp && tmp->next && fd != tmp->fd)
+	while (tmp && tmp->fd != fd)
 		tmp = tmp->next;
-	if (tmp && fd == tmp->fd && tmp->line)
+	if (tmp && tmp->fd == fd)
 	{
 		if (!(*line = ft_strdup(tmp->line)))
 			return (-1);
 	}
 	else
 	{
-		tmp = list;
 		if (!(*line = ft_strdup("")))
 			return (-1);
 	}
-	if ((size = ft_readfd(fd, line)) <= 0 && (!*line || *line[0] == '\0'))
+	if ((size = ft_readfd(fd, line)) <= 0 && (!*line || !*line[0]))
 		return (size == 0 ? 0 : -1);
 	return (ft_build_elem(&tmp, &list, line, fd));
 }

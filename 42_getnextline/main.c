@@ -6,11 +6,21 @@
 int main(void)
 {
   int fd;
+  int ret;
   char *line;
 
-  fd = open("txt", O_RDONLY);
-  while (get_next_line(fd, &line) > 0)
+  fd = open("txt4", O_RDONLY);
+  while ((ret = get_next_line(fd, &line)) > 0)
+  {
+    ft_putnbr(ret);
+    ft_putstr(" | ");
     ft_putendl(line);
+    ft_strdel(&line);
+  }
+  ft_putnbr(ret);
+  ft_putstr(" | ");
+  ft_putendl(line);
+  ft_strdel(&line);
   close(fd);
   return (0);
 }
