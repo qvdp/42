@@ -9,87 +9,66 @@
 /*   Updated: 2018/12/03 14:28:14 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
 #include <stdlib.h>
 #include "get_next_line.h"
 #include <stdio.h>
 
-static int			ft_readfd(const int fd, char **str)
+static void			ft_readfd(const int fd, char **str)
 {
 	int		temp_size;
 	char	*tmp;
 	char	buff[BUFF_SIZE + 1];
 
-
 	while ((temp_size = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[temp_size] = '\0';
-		tmp = ft_strjoin(*str, buff);
-		free(*str);
-		*str = tmp;
+		tmp = *str;
+		*str = ft_strjoin(*str, buff);
+		free(tmp);
 		if (ft_strchr(*str, '\n'))
 			break ;
 	}
-	return (temp_size);
 }
 
-static int			ft_build_elem(t_gnl **tmp, t_gnl **alist, char **line, int fd)
+static int		return_line(t_gnl *elem, char **line)
 {
+	char	*tmp;
 	int		i;
-	char	*str;
 
 	i = 0;
-	if ((str = *line))
-	{
-		while (str[i] && str[i] != '\n')
-			i++;
-		if ((*line = ft_strsub(str, 0, i)) && *tmp && ((*tmp)->fd == fd))
-		{
-			if ((ft_strchr(str, '\n')))
-				(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
-			else
-				(*tmp)->line = ft_strdup("");
-		}
-		else
-		{
-			if (!(*tmp = (t_gnl*)malloc(sizeof(t_gnl))))
-				return (-1);
-			if (ft_strchr(str, '\n'))
-				(*tmp)->line = ft_strdup(ft_strchr(str, '\n') + 1);
-			else
-				(*tmp)->line = ft_strdup("");
-			(*tmp)->fd = fd;
-			(*tmp)->next = *alist;
-			*alist = *tmp;
-		}
-		free(str);
-	}
+	tmp = elem->line;
+	while (elem->line[i] && elem->line[i] != '\n')
+		i++;
+	*line = (i == 0) ? ft_strnew(0) : ft_strsub(elem->line, 0, i);
+	elem->line = (elem->line[i] == '\n') ? ft_strdup(ft_strchr(elem->line, '\n') + 1) : ft_strnew(0);
+	free(tmp);
 	return (1);
 }
 
 int			get_next_line(const int fd, char **line)
 {
 	static t_gnl	*list = NULL;
-	int				size;
 	t_gnl			*tmp;
 
-	if (fd < 0 || !line || !BUFF_SIZE || BUFF_SIZE < 1)
+	if (read(fd, 0, 0) == -1 || BUFF_SIZE < 1)
 		return (-1);
 	tmp = list;
 	while (tmp && tmp->fd != fd)
 		tmp = tmp->next;
-	if (tmp && tmp->fd == fd)
+	if (!tmp)
 	{
-		if (!(*line = ft_strdup(tmp->line)))
-			return (-1);
+		if ((tmp = (t_gnl*)malloc(sizeof(t_gnl))))
+		{
+			tmp->line = ft_strnew(0);
+			tmp->fd = fd;
+			tmp->next = list;
+			list = tmp;
+		}
+		else
+			return (0);
 	}
-	else
-	{
-		if (!(*line = ft_strdup("")))
-			return (-1);
-	}
-	if ((size = ft_readfd(fd, line)) <= 0 && (!*line || !*line[0]))
-		return (size == 0 ? 0 : -1);
-	return (ft_build_elem(&tmp, &list, line, fd));
+	if (!(ft_strchr(tmp->line, '\n')))
+		ft_readfd(fd, &(tmp->line));
+	return ((tmp->line[0]) ? return_line(tmp, line) : 0);
 }
