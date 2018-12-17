@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 16:51:25 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/12/03 14:28:14 by qvan-der         ###   ########.fr       */
+/*   Created: 2018/12/17 11:38:10 by qvan-der          #+#    #+#             */
+/*   Updated: 2018/12/17 11:39:36 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdlib.h>
 #include "get_next_line.h"
-#include <stdio.h>
 
-static void			ft_readfd(const int fd, char **str)
+static void		ft_readfd(const int fd, char **str)
 {
 	int		temp_size;
 	char	*tmp;
@@ -41,12 +41,13 @@ static int		return_line(t_gnl *elem, char **line)
 	while (elem->line[i] && elem->line[i] != '\n')
 		i++;
 	*line = (i == 0) ? ft_strnew(0) : ft_strsub(elem->line, 0, i);
-	elem->line = (elem->line[i] == '\n') ? ft_strdup(ft_strchr(elem->line, '\n') + 1) : ft_strnew(0);
+	elem->line = (elem->line[i] == '\n') ?
+		ft_strdup(ft_strchr(elem->line, '\n') + 1) : ft_strnew(0);
 	free(tmp);
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
 	static t_gnl	*list = NULL;
 	t_gnl			*tmp;
