@@ -6,7 +6,7 @@
 /*   By: qvan-der <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 11:38:10 by qvan-der          #+#    #+#             */
-/*   Updated: 2018/12/17 11:39:36 by qvan-der         ###   ########.fr       */
+/*   Updated: 2018/12/17 16:14:57 by qvan-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				get_next_line(const int fd, char **line)
 			list = tmp;
 		}
 		else
-			return (0);
+			return (-1);
 	}
 	if (!(ft_strchr(tmp->line, '\n')))
 		ft_readfd(fd, &(tmp->line));
