@@ -1,0 +1,2 @@
+# /proc/uptime donne le temps en sec.
+echo "$(</proc/uptime awk '{print $1}') sec"

@@ -1,0 +1,2 @@
+# en1 corresponds to WiFi card (networksetup -listallhardwareports)
+ifconfig en1 | grep ether | awk '{print $2}'

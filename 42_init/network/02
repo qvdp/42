@@ -1,0 +1,2 @@
+# en0 corresponds to ethernet port (networksetup -listallhardwareports)
+ifconfig en0 | grep "broadcast" | awk '{print $5 " " $6}'

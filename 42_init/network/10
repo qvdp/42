@@ -1,0 +1,2 @@
+# traceroute identify all devices between our terminal and the reached domain name
+traceroute slash16.org

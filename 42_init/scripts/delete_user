@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#Take a user name in argument
+USER=$1
+
+#block user
+echo "Blocking $USER"
+passwd -l $USER
+sleep 1
+
+#Kill process of the user
+echo "The program is up to kill current process of $USER"
+sleep 1
+pids=$(ps -u $USER | tail -n +2 | awk '{print $1}')
+while IFS= read -r line
+do
+	echo -ne "Killing $line...\n"
+	kill -KILL $(line)
+	sleep 1
+done <<< "$pids"
+
+#Remove user and its folder
+echo "Removing user"
+userdel -r $USER
+sleep 1
+
+#Send message
+echo "done"

@@ -1,0 +1,2 @@
+# In ssh -> the user can log in by using > ssh user_login@host_addree -p host_port, his pwd will be asked.
+# In graphical mode -> the user can login with his login and pwd

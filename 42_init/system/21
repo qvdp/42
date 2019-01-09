@@ -1,0 +1,2 @@
+# user ID between : grep -e '^UID_MIN|^UID_MAX' /etc/login.defs
+getent passwd {1000..60000}

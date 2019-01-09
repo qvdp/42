@@ -1,0 +1,2 @@
+# List all interface without any details
+ifconfig -l

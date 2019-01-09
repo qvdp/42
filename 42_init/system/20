@@ -1,0 +1,2 @@
+# getent - get entry displays entries from databases supported by the Name Service Switch libraries
+getent passwd | cut -d':' -f1

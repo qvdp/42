@@ -1,0 +1,10 @@
+#!/bin/bash
+
+list=$(getent passwd)
+while IFS= read -r line
+do
+	login=$(echo -n "$line" | cut -d: -f1)
+	uid=$(echo -n "$line" | cut -d: -f3)
+	path=$(echo -n "$line" | cut -d: -f6)
+	echo -ne "$login \t $uid \t $path\n"
+done <<< "$list"

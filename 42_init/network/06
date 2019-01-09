@@ -1,0 +1,2 @@
+# A symbolic link stand in the man (/etc/resolv.conf) which redirect to
+/var/run/resolv.conf

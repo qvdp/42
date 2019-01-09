@@ -1,0 +1,4 @@
+# netstat display routing tables
+netstat -rn | awk '/default/{print $2}' | head -n 1
+# to compare
+netstat -nr | grep 'default' | sed -n '1!p' | awk '{print $2}'

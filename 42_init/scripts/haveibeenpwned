@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# verify if curl is install
+echo -e "Verifying if \e[7mcurl\e[0m is already installed..."
+apt install curl > out.log 2> /dev/null
+sleep 1
+echo -e "\e[32mOK\e[39m"
+echo
+
+# GET request on have i been powned website
+account=$1
+echo "Checking if account has been hacked..."
+sleep 1
+curl "https://haveibeenpwned.com/api/v2/breachedaccount/${account}" &> curl.out
+request=$(cat curl.out | grep PwnCount)
+
+# display result
+if [ -z "$request" ]
+then
+	echo "You're safe"
+else
+	echo -e "Oups, more information \e]8;;https://haveibeenpwned.com/api/v2/breachedaccount/${account}\e\\here\e]8;;\e\\"
+	echo -e "\e[2m(⌘ + click to open in browser)\e[0m"
+	echo
+fi
