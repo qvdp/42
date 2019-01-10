@@ -1,2 +1,7 @@
+# part a
 # en0 corresponds to ethernet port (networksetup -listallhardwareports)
-ifconfig en0 | grep "broadcast" | awk '{print $5 " " $6}'
+ifconfig en0 | grep "broadcast" | awk '{print $6}'
+
+# part b
+# ping $(ifconfig en0 | grep "broadcast" | awk '{print $6}') might be necessary
+arp -a | grep '42.fr' | awk '{print $2}'

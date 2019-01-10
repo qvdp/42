@@ -1,1 +1,2 @@
+# with localhost = address of the device and port the port mapped to the device
 ssh user@localhost -p port

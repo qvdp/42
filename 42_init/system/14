@@ -1,1 +1,2 @@
+# root privileges necessary
 tail -f /var/log/syslog &

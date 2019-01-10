@@ -1,2 +1,2 @@
 # ps list all current processus
-ps ax | grep ssh | head -n 1 | awk '{print $1}'
+ps -ax | grep ssh | head -n 1 | awk '{print $1}'

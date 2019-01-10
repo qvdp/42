@@ -1,1 +1,2 @@
-nslookup $(ifconfig en0 | grep 'inet ' | awk '{print $2}')
+# displayed nslookup $(ifconfig en0 | grep 'inet ' | awk '{print $2}')
+e3r3p9.42.fr

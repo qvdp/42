@@ -1,1 +1,4 @@
-nslookup 42.fr | grep 'Address' | awk '{print $2}' | sed -n '1!p'
+# displayed with nslookup 42.fr | grep 'Address' | awk '{print $2}' | sed -n '1!p'
+10.52.1.11
+10.52.1.12
+10.52.1.76

@@ -1,1 +1,2 @@
-kill $(PID)
+# with correspondig PID
+kill -KILL PID

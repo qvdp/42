@@ -1,1 +1,2 @@
+# (root privileges necessary)
 apt list --installed

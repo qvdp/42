@@ -1,1 +1,2 @@
-exit
+# root privileges necessary
+service ssh stop
