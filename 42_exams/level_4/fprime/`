@@ -1,0 +1,38 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+void	ft_fprime(int nbr)
+{
+	int	div;
+
+	printf("For %d\n", nbr);
+	if (nbr == 1)
+		printf("1");
+	else
+	{
+		while (nbr > 1)
+		{
+			div = 2;
+			while(div < 6)
+			{
+				if (nbr % div == 0)
+				{
+					
+					nbr /= div;
+					printf("%d*", div);
+					break;
+				}
+				else
+					div++;
+			}
+		}
+	}
+}
+
+int	main (int argc, char *argv[])
+{
+	if (argc == 2)
+		ft_fprime(atoi(argv[1]));
+	printf("\n");
+	return (0);
+}
