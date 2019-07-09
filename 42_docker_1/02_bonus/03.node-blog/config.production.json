@@ -1,0 +1,33 @@
+{
+	"url": "http://docker-42.fr",
+		"server": {
+			"port": 1340,
+			"host": "0.0.0.0"
+		},
+		"database": {
+			"client": "sqlite3",
+			"connection": {
+				"filename": "/var/lib/ghost/content/data/ghost.db"
+			}
+		},
+		"mail": {
+			"transport": "SMTP",
+			"options": {
+				"service": "Gmail",
+				"auth": {
+					"user": "docker42qvander@gmail.com",
+					"pass": "test1234."
+				}
+			}
+		},
+		"logging": {
+			"transports": [
+				"file",
+			"stdout"
+			]
+		},
+		"process": "systemd",
+		"paths": {
+			"contentPath": "/var/lib/ghost/content"
+		}
+}

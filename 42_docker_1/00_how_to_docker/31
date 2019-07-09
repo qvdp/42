@@ -1,0 +1,1 @@
+cmd1=$(docker-machine ssh Char "docker service ls -q" | head -n 1) && cmd2=$(docker-machine ssh Char "docker service ls -q" | head -n 2 | tail -n 1) && cmd3=$(docker-machine ssh Char "docker service ls -q" | tail -n 1) && docker-machine ssh Char "docker service rm $cmd1 $cmd2 $cmd3"

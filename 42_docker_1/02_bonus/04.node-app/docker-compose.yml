@@ -1,0 +1,49 @@
+version: "3.7"
+networks:
+  nodeapp:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
+services:
+  mongodb:
+    image: mongo:latest
+    networks:
+      nodeapp:
+        ipv4_address: 172.21.0.2
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=qvan-der
+      - MONGO_INITDB_ROOT_PASSWORD=635241
+      - MONGO_INITDB_DATABASE=nodeapp
+    volumes:
+      - ./mongodb:/data/db
+    ports:
+      - "1336:27017"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: sailsjs:latest
+    networks:
+      nodeapp:
+        ipv4_address: 172.21.0.3
+    volumes:
+      - ./backend:/app
+    command : bash -c "node app.js"
+    ports:
+      - "1337:1337"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      nodeapp:
+        ipv4_address: 172.21.0.4
+    environment:
+      - VUE_APP_BASE_URL=http://localhost:1338/
+      - VUE_APP_API_URL=http://localhost:1337/
+    volumes:
+      - ./frontend:/app
+    command : bash -c "npm run serve"
+    ports:
+      - "1338:8080"
