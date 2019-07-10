@@ -33,7 +33,7 @@ module.exports.datastores = {
   ***************************************************************************/
   default: {
     adapter: 'sails-mongo',
-    url: 'mongodb://qvan-der:635241@localhost:27017/nodeapp?authSource=admin'
+    url: 'mongodb://qvan-der:635241@172.33.0.2:27017/nodeapp?authSource=admin'
   }
 
 
