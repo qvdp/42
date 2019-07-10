@@ -6,7 +6,7 @@ LABEL maintainer="Quentin Van Der perre <qvan-der@42.student.fr>"
 ARG TEAMSPEAK_URL=https://files.teamspeak-services.com/releases/server/3.8.0/teamspeak3-server_linux_amd64-3.8.0.tar.bz2
 
 RUN apt-get update \
-	&& apt upgrade \
+	&& apt upgrade -y \
 	&& apt-get install -y wget tar bzip2 \ 
 	&& mkdir -p /home/teamspeak/server \
 	&& chmod 777 /home/teamspeak \
@@ -17,6 +17,6 @@ RUN apt-get update \
 
 WORKDIR /home/teamspeak/server/
 
-EXPOSE 9987 1011 30033
+EXPOSE 9987/udp 1011 30033
 
 ENTRYPOINT ./ts3server_minimal_runscript.sh

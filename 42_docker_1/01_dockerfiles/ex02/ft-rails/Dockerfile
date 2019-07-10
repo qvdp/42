@@ -1,5 +1,5 @@
 FROM ruby:latest
-RUN apt-get update && apt upgrade -y && apt-get install nodejs sqlite3
+RUN apt-get update && apt upgrade -y && apt-get install -y nodejs sqlite3
 
 LABEL maintainer="Quentin Van Der perre <qvan-der@42.student.fr>"
 

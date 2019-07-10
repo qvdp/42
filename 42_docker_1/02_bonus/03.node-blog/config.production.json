@@ -1,5 +1,5 @@
 {
-	"url": "http://docker-42.fr",
+	"url": "http://192.168.99.100:3000",
 		"server": {
 			"port": 1340,
 			"host": "0.0.0.0"

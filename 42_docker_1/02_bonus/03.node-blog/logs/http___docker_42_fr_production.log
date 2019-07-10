@@ -1,0 +1,44 @@
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: posts","time":"2019-07-09T14:58:26.926Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: users","time":"2019-07-09T14:58:26.952Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: posts_authors","time":"2019-07-09T14:58:26.971Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: roles","time":"2019-07-09T14:58:26.980Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: roles_users","time":"2019-07-09T14:58:26.996Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: permissions","time":"2019-07-09T14:58:27.005Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: permissions_users","time":"2019-07-09T14:58:27.020Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: permissions_roles","time":"2019-07-09T14:58:27.030Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: permissions_apps","time":"2019-07-09T14:58:27.038Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: settings","time":"2019-07-09T14:58:27.047Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: tags","time":"2019-07-09T14:58:27.062Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: posts_tags","time":"2019-07-09T14:58:27.080Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: apps","time":"2019-07-09T14:58:27.089Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: app_settings","time":"2019-07-09T14:58:27.112Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: app_fields","time":"2019-07-09T14:58:27.128Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: clients","time":"2019-07-09T14:58:27.138Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: client_trusted_domains","time":"2019-07-09T14:58:27.159Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: accesstokens","time":"2019-07-09T14:58:27.170Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: refreshtokens","time":"2019-07-09T14:58:27.183Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: subscribers","time":"2019-07-09T14:58:27.201Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: invites","time":"2019-07-09T14:58:27.216Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: brute","time":"2019-07-09T14:58:27.240Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: webhooks","time":"2019-07-09T14:58:27.247Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: sessions","time":"2019-07-09T14:58:27.257Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: integrations","time":"2019-07-09T14:58:27.271Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: api_keys","time":"2019-07-09T14:58:27.287Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: mobiledoc_revisions","time":"2019-07-09T14:58:27.302Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: members","time":"2019-07-09T14:58:27.318Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Creating table: actions","time":"2019-07-09T14:58:27.335Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Tag","time":"2019-07-09T14:58:27.356Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Client","time":"2019-07-09T14:58:27.381Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Role","time":"2019-07-09T14:58:27.400Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Permission","time":"2019-07-09T14:58:27.425Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: User","time":"2019-07-09T14:58:27.677Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Post","time":"2019-07-09T14:58:28.036Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Model: Integration","time":"2019-07-09T14:58:28.299Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Relation: Role to Permission","time":"2019-07-09T14:58:28.317Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Relation: Post to Tag","time":"2019-07-09T14:58:28.611Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Relation: User to Role","time":"2019-07-09T14:58:28.644Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Ghost is running in production...","time":"2019-07-09T14:58:30.427Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Your site is now available on http://docker-42.fr/","time":"2019-07-09T14:58:30.428Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Ctrl+C to shut down","time":"2019-07-09T14:58:30.429Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":30,"msg":"Ghost boot 4.593s","time":"2019-07-09T14:58:30.432Z","v":0}
+{"name":"Log","hostname":"4595821ebc5c","pid":1,"level":40,"msg":"Ghost has shut down","time":"2019-07-09T14:58:47.152Z","v":0}

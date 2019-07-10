@@ -1,0 +1,11 @@
+{
+  "name": "docker-test",
+  "version": "0",
+  "description": "Docker app",
+  "main": "index.js",
+  "author": "avdp",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

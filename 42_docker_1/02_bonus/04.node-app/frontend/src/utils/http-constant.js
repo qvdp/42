@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // Build a unical instance of axios for store request
 const HTTP = axios.create({
-  baseURL: process.env.VUE_APP_API_URL || 'http://localhost:1337/',
+  baseURL: process.env.VUE_APP_API_URL || 'http://192.168.99.100:1337/',
   headers: {
     'Authorization': {
       toString () {
