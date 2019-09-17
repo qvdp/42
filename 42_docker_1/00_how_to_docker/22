@@ -1,1 +1,0 @@
-cmd=$(docker-machine ssh Char "docker swarm join-token worker" | tail -n 2) && docker-machine ssh Aiur "eval $cmd"
