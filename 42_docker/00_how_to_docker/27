@@ -1,0 +1,1 @@
+cmd=$(docker-machine ssh Char "docker service ps engineering-bay -q | head -n 1") && docker-machine ssh Char "docker service logs -f $cmd"
